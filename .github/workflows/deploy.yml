@@ -6,6 +6,8 @@ on:
       - main
 env:
   VITE_MANA: days
+  VITE_KEY1: "er"
+  VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
 jobs:
   build:
     name: Build
@@ -13,6 +15,7 @@ jobs:
     env:
       VITE_MANA1: days1
       VITE_KEY: ${{ secrets.VITE_KEY }}
+      VITE_KEY1: "er1"
       VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
 
 
@@ -60,3 +63,5 @@ jobs:
         env:
           VITE_DAY: days
           VITE_KEYS:  ${{ secrets.GITHUB_TOKEN }}
+          VITE_KEY1: "er3"
+          VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
