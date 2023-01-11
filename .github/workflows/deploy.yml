@@ -13,6 +13,8 @@ jobs:
     env:
       VITE_MANA1: days1
       VITE_KEY: ${{ secrets.VITE_KEY }}
+      VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
+
 
     steps:
       - name: Checkout repo
