@@ -30,10 +30,13 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+#         uses: bahmutov/npm-install@v1
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
 
-      - name: Build project
-        run: echo"${{ secrets.VITE_KEY }} "
+#       - name: Build project
+#         run: echo"${{ secrets.VITE_KEY }} "
 
 
 #       - name: Upload production-ready build files
