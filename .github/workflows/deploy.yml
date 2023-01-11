@@ -17,6 +17,7 @@ jobs:
       VITE_KEY: ${{ secrets.VITE_KEY }}
       VITE_KEY1: "er1"
       VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
+    
 
 
     steps:
@@ -32,36 +33,37 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Build project
-        run: npm run build
+        run: echo"${{ secrets.VITE_KEY }} "
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
 
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    env:
-      VITE_YEAR: days
-    if: github.ref == 'refs/heads/main'
+#       - name: Upload production-ready build files
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: production-files
+#           path: ./dist
 
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
+#   deploy:
+#     name: Deploy
+#     needs: build
+#     runs-on: ubuntu-latest
+#     env:
+#       VITE_YEAR: days
+#     if: github.ref == 'refs/heads/main'
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-        env:
-          VITE_DAY: days
-          VITE_KEYS:  ${{ secrets.GITHUB_TOKEN }}
-          VITE_KEY1: "er3"
-          VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
+#     steps:
+#       - name: Download artifact
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: production-files
+#           path: ./dist
+
+#       - name: Deploy to GitHub Pages
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./dist
+#         env:
+#           VITE_DAY: days
+#           VITE_KEYS:  ${{ secrets.GITHUB_TOKEN }}
+#           VITE_KEY1: "er3"
+#           VITE_KEY2: ${{ secrets.GITHUB_TOKEN  }}
